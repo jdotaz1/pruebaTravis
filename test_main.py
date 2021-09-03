@@ -6,7 +6,7 @@ class flaskTest(unittest.TestCase):
     def test_index(self):
         tester = app.test_client(self)
         response = tester.get('/', content_type='document')
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 500)
 
 
 if __name__ == '__main__':
