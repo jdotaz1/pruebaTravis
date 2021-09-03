@@ -1,15 +1,13 @@
-import pytest
-from main import suma
+from main import app
+import unittest
 
 
-@pytest.mark.parametrize(
-    "input_a, input_b, expected",
-    [
-        (3, 2, 5),
-        (2, 3, 5),
-        (suma(3, 2), 5, 10),
-        (3, suma(2, 5), 10)
-    ]
-)
-def test_suma_muti(input_a, input_b, expected):
-    assert suma(input_a, input_b) == expected
+class flaskTest(unittest.TestCase):
+    def test_index(self):
+        tester = app.test_client(self)
+        response = tester.get('/', content_type='document')
+        self.assertEqual(response.status_code, 200)
+
+
+if __name__ == '__main__':
+    unittest.main()
